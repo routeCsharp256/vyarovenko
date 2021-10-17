@@ -1,3 +1,3 @@
-# MerchandiseService
+# Merchandise Service
 
-new line
+Homework Project
