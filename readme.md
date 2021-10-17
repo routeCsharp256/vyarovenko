@@ -1,1 +1,3 @@
 # Merchandise Service
+
+Homework project
