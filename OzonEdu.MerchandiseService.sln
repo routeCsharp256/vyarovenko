@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{13A99F60-FAE7-4ED6-9B69-E5FE8504BA62}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{AD4035B0-384C-48A0-B1CA-382048A0D2D8}"
-ProjectSection(SolutionItems) = preProject
-	readme.md = readme.md
-	.editorconfige = .editorconfige
-	.gitignore = .gitignore
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		.editorconfige = .editorconfige
+		.gitignore = .gitignore
+		dockerfile = dockerfile
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FDAE759F-585F-4E8F-8762-4D59A56A82FD}"
 EndProject
@@ -15,22 +19,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{D5E73602
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{A48D2B62-348C-4019-B9BE-C236F67127F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OzonEdu.MerchandiseService", "src\OzonEdu.MerchandiseService\OzonEdu.MerchandiseService.csproj", "{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzonEdu.MerchandiseService", "src\OzonEdu.MerchandiseService\OzonEdu.MerchandiseService.csproj", "{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "o3", "o3", "{B9E78F49-1927-4D60-8856-6A7A2766C90B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".o3", ".o3", "{B9E78F49-1927-4D60-8856-6A7A2766C90B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{76231F88-05D0-4CD3-BD0E-CF5EB408FC03} = {13A99F60-FAE7-4ED6-9B69-E5FE8504BA62}
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76231F88-05D0-4CD3-BD0E-CF5EB408FC03} = {13A99F60-FAE7-4ED6-9B69-E5FE8504BA62}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC8BE419-4BA0-4004-9718-8DFF2EAF09E4}
 	EndGlobalSection
 EndGlobal
