@@ -1,1 +1,3 @@
 # MerchandiseService
+
+new line
