@@ -7,9 +7,6 @@ services:
     hostname: merchandise-service
     ports:
       - "5000:80"
-    depends_on:
-      - mcr.microsoft.com/dotnet/sdk:5.0
-      - mcr.microsoft.com/dotnet/aspnet:5.0
   
   stock-api:
     image: 'ghcr.io/ozon-edu-csharp-2021/stock-api:main'
