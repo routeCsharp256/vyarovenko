@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{AD4035
 	ProjectSection(SolutionItems) = preProject
 		.editorconfige = .editorconfige
 		.gitignore = .gitignore
-		dockerfile = dockerfile
 		readme.md = readme.md
 	EndProjectSection
 EndProject
@@ -18,6 +17,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{D5E73602-DAB5-4A47-917B-E121A288CF44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{A48D2B62-348C-4019-B9BE-C236F67127F8}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		dockerfile = dockerfile
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzonEdu.MerchandiseService", "src\OzonEdu.MerchandiseService\OzonEdu.MerchandiseService.csproj", "{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}"
 EndProject
