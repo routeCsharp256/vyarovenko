@@ -1,4 +1,4 @@
-# MerchandiseService
+# Merchandise Service
 
 Homework Project
 
