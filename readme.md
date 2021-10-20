@@ -1,3 +1,3 @@
 # MerchandiseService
 
-new line
+Виталий Яровенко
