@@ -1,3 +1,3 @@
 # MerchandiseService
 
-Виталий Яровенко
+Vitaliy Yarovenko
