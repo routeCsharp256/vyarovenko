@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\OzonEdu.MerchandiseService.Grpc\OzonEdu.MerchandiseService.Grpc.csproj" />
-      <ProjectReference Include="..\..\OzonEdu.MerchandiseService.Models\OzonEdu.MerchandiseService.Models.csproj" />
+      <ProjectReference Include="..\OzonEdu.MerchandiseService.Grpc\OzonEdu.MerchandiseService.Grpc.csproj" />
+      <ProjectReference Include="..\OzonEdu.MerchandiseService.Models\OzonEdu.MerchandiseService.Models.csproj" />
     </ItemGroup>
 
 </Project>
