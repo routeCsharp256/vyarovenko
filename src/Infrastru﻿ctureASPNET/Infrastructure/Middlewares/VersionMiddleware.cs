@@ -15,8 +15,8 @@ namespace Infrastru﻿ctureASPNET.Infrastructure.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "no version";
-            var serviceName = Assembly.GetExecutingAssembly().GetName().Name?.ToString() ?? "no name";
+            var version = Assembly.GetEntryAssembly().GetName().Version?.ToString() ?? "no version";
+            var serviceName = Assembly.GetEntryAssembly().GetName().Name?.ToString() ?? "no name";
             VersionModel model = new VersionModel 
             {
                 Version= version, 
