@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Infrastru_ctureASPNET.Models;
 
 namespace Infrastru﻿ctureASPNET.Infrastructure.Extensions
 {
@@ -25,11 +26,16 @@ namespace Infrastru﻿ctureASPNET.Infrastructure.Extensions
 
                 services.AddSwaggerGen(options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "OzonEdu.MerchandiseService", Version = "v1" });
+                    options.SwaggerDoc("v1", 
+                        new OpenApiInfo 
+                        { 
+                            Title = VersionModel.ServiceName, 
+                            Version = VersionModel.Version
+                        });
 
                     options.CustomSchemaIds(x => x.FullName);
 
-                    var xmlFileName = Assembly.GetEntryAssembly().GetName().Name + ".xml";
+                    var xmlFileName = VersionModel.ServiceName + ".xml";
                     var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
                     options.IncludeXmlComments(xmlFilePath);
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Infrastru_ctureASPNET.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,7 @@ namespace Infrastru﻿ctureASPNET.Infrastructure.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var version = Assembly.GetEntryAssembly().GetName().Version?.ToString() ?? "no version";
-            var serviceName = Assembly.GetEntryAssembly().GetName().Name?.ToString() ?? "no name";
-            VersionModel model = new VersionModel 
-            {
-                Version= version, 
-                ServiceName= serviceName 
-            };
-            await context.Response.WriteAsync(model.ToString());
-        }
-    }
-    public class VersionModel
-    {
-        public string? Version { get; set; }
-        public string? ServiceName { get; set; }
-        public override string ToString()
-        {
-            return "{" + $"\"version\":\"{Version}\", \"serviceName\": \"{ServiceName}\"" + "}";
+            await context.Response.WriteAsync(VersionModel.ToString());
         }
     }
 }
