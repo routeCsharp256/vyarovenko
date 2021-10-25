@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Middlewares
+namespace Infrastru﻿ctureASPNET.Infrastructure.Middlewares
 {
     public class ReadyMiddleware
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OzonEdu.MerchandiseService.Models
+namespace Infrastru﻿ctureASPNET.Models
 {
     public class ResponseLogModel
     {

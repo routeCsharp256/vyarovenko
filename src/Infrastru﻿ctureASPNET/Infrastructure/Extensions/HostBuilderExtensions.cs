@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using OzonEdu.MerchandiseService.Infrastructure.Filters;
-using OzonEdu.MerchandiseService.Infrastructure.Interceptors;
-using OzonEdu.MerchandiseService.Infrastructure.StartupFilters;
+using Infrastru﻿ctureASPNET.Infrastructure.Filters;
+using Infrastru﻿ctureASPNET.Infrastructure.Interceptors;
+using Infrastru﻿ctureASPNET.Infrastructure.StartupFilters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Extensions
+namespace Infrastru﻿ctureASPNET.Infrastructure.Extensions
 {
     public static class HostBuilderExtensions
     {
@@ -29,7 +29,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Extensions
 
                     options.CustomSchemaIds(x => x.FullName);
 
-                    var xmlFileName = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+                    var xmlFileName = Assembly.GetEntryAssembly().GetName().Name + ".xml";
                     var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
                     options.IncludeXmlComments(xmlFilePath);
 

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using OzonEdu.MerchandiseService.Models;
+using Infrastru﻿ctureASPNET.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Middlewares
+namespace Infrastru﻿ctureASPNET.Infrastructure.Middlewares
 {
     public class ResponseLoggingMiddleware
     {

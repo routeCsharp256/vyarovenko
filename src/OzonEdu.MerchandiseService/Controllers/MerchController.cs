@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OzonEdu.MerchandiseService.Models;
-using OzonEdu.MerchandiseService.Services;
 using OzonEdu.MerchandiseService.Services.Interfaces;
 using System;
 using System.Collections.Generic;

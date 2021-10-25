@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Middlewares
+namespace Infrastru﻿ctureASPNET.Infrastructure.Middlewares
 {
     public class VersionMiddleware
     {
