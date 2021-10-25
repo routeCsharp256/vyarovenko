@@ -4,6 +4,6 @@ namespace OzonEdu.MerchandiseService.Models
 {
     public class GetMerchResponseModel
     {
-        public string name { get; set; }
+        public string Name { get; set; }
     }
 }

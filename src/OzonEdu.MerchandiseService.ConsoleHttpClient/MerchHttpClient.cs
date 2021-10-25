@@ -19,7 +19,7 @@ namespace OzonEdu.MerchandiseService.ConsoleHttpClient
         {
             using var response = await _httpClient.GetAsync("/v1/api/merch/GetMerch", token);
             var body = await response.Content.ReadAsStringAsync(token);
-            return JsonSerializer.Deserialize<GetMerchResponseModel>(body);
+            return JsonSerializer.Deserialize<GetMerchResponseModel>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
         public async Task<bool> GetMerchIsIssued(CancellationToken token)
         {

@@ -39,7 +39,7 @@ namespace OzonEdu.MerchandiseService.Controllers
             }
             GetMerchResponseModel response = new GetMerchResponseModel
             {
-                name = merchItem.Name
+                Name = merchItem.Name
             };
             return Ok(response);
         }
