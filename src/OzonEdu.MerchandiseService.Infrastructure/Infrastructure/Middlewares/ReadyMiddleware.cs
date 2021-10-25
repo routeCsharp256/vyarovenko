@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace Infrastru﻿ctureASPNET.Infrastructure.Middlewares
+namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Middlewares
 {
-    public class LiveMiddleware
+    public class ReadyMiddleware
     {
-        public LiveMiddleware(RequestDelegate next)
+        public ReadyMiddleware(RequestDelegate next)
         {
         }
 

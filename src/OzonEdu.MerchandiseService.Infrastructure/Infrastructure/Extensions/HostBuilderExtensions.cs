@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Infrastru﻿ctureASPNET.Infrastructure.Filters;
-using Infrastru﻿ctureASPNET.Infrastructure.Interceptors;
-using Infrastru﻿ctureASPNET.Infrastructure.StartupFilters;
+using OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Filters;
+using OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Interceptors;
+using OzonEdu.MerchandiseService.Infrastructure.Infrastructure.StartupFilters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Infrastru_ctureASPNET.Models;
 
-namespace Infrastru﻿ctureASPNET.Infrastructure.Extensions
+namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Extensions
 {
     public static class HostBuilderExtensions
     {

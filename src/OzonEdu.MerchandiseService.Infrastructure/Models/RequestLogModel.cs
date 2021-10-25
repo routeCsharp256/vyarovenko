@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace Infrastru﻿ctureASPNET.Models
+namespace OzonEdu.MerchandiseService.Infrastructure.Models
 {
-    public class ResponseLogModel
+    public class RequestLogModel
     {
-        public string Route { get; set; }
+        public string Route { get; set;}
         public Dictionary<string, string> Headers { get; set; } = new Dictionary<string, string>();
         public override string ToString()
         {
             string result = "\n";
-            result += "Response logged:\n";
+            result += "Request logged:\n";
             result += $"Route: {Route}\n";
             result += $"Headers\n";
             foreach (var header in Headers)

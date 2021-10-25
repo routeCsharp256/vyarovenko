@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Infrastru﻿ctureASPNET.Infrastructure.StartupFilters
+namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.StartupFilters
 {
     public class SwaggerStartupFilter : IStartupFilter
     {

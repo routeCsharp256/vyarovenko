@@ -1,6 +1,6 @@
-using InfrastructureASPNET.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Extensions;
 
 namespace OzonEdu.MerchandiseService
 {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Infrastru﻿ctureASPNET.Infrastructure.Middlewares;
+using OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Middlewares;
 using System;
 
-namespace Infrastru﻿ctureASPNET.Infrastructure.StartupFilters
+namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.StartupFilters
 {
     public class TerminalStartupFilter : IStartupFilter
     {
