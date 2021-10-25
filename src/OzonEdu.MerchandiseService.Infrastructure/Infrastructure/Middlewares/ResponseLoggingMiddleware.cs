@@ -47,7 +47,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Middlewares
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Could not log request body");
+                _logger.LogError(e, "Could not log response");
             }
         }
     }
