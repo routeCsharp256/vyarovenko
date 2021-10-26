@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Interceptors
+namespace OzonEdu.MerchandiseService.Infrastructure.gRPC.Interceptors
 {
     public class LoggingInterceptor : Interceptor
     {

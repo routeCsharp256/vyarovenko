@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Filters
+namespace OzonEdu.MerchandiseService.Infrastructure.Exceptions.Filters
 {
     public class GlobalExceptionFilter : ExceptionFilterAttribute
     {

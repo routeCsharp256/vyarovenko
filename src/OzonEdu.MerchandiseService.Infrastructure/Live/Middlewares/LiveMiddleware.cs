@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Middlewares
+namespace OzonEdu.MerchandiseService.Infrastructure.Live.Middlewares
 {
     public class LiveMiddleware
     {

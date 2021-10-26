@@ -1,12 +1,8 @@
-﻿using Infrastru_ctureASPNET.Models;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using Microsoft.AspNetCore.Http;
+using OzonEdu.MerchandiseService.Infrastructure.Version.Models;
 using System.Threading.Tasks;
 
-namespace OzonEdu.MerchandiseService.Infrastructure.Infrastructure.Middlewares
+namespace OzonEdu.MerchandiseService.Infrastructure.Version.Middlewares
 {
     public class VersionMiddleware
     {

@@ -11,7 +11,7 @@ namespace OzonEdu.MerchandiseService.ConsoleHttpClient
         {
             var client = new MerchHttpClient(new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:5001")
+                BaseAddress = new Uri("http://localhost:5000")
             });
             GetMerchResponseModel merch = client.GetMerch(CancellationToken.None).Result;
             Console.WriteLine($"GetMerch: merch.Name = { merch.Name }");
