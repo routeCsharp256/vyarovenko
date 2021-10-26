@@ -28,24 +28,23 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
         {
             try
             {
-                if (context.Request.Path != null && context.Request.Headers.Count > 0)
+                if (context.Request.Path != null)
                 {
-                    if(context.Request.Headers["Content-Type"] == "application/grpc")
-                    {
-                        return;
-                    }
-                    context.Request.EnableBuffering();
-
                     RequestLogModel logModel = new RequestLogModel();
-
-                    logModel.Route = context.Request.Path;
-                    foreach (var header in context.Request.Headers)
+                    if (context.Request.Headers.Count > 0)
                     {
-                        logModel.Headers.Add(header.Key, header.Value);
+                        if (context.Request.Headers["Content-Type"] == "application/grpc")
+                        {
+                            return;
+                        }
+                        foreach (var header in context.Request.Headers)
+                        {
+                            logModel.Headers.Add(header.Key, header.Value);
+                        }
                     }
+                    logModel.Route = context.Request.Path;
 
                     _logger.LogInformation(logModel.ToString());
-
                 }
             }
             catch (Exception e)

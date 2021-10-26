@@ -27,21 +27,22 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs.Middlewares
         {
             try
             {
-                if (context.Response.HasStarted && context.Response.Headers.Count > 0)
+                if (context.Response.HasStarted)
                 {
-                    if (context.Request.Headers["Content-Type"] == "application/grpc")
-                    {
-                        return;
-                    }
-
                     ResponseLogModel logModel = new ResponseLogModel();
-
-                    logModel.Route = context.Request.Path;
-                    foreach (var header in context.Response.Headers)
+                    if (context.Response.Headers.Count > 0)
                     {
-                        logModel.Headers.Add(header.Key, header.Value);
+                        if (context.Request.Headers["Content-Type"] == "application/grpc")
+                        {
+                            return;
+                        }
+                        foreach (var header in context.Response.Headers)
+                        {
+                            logModel.Headers.Add(header.Key, header.Value);
+                        }
                     }
-
+                    logModel.Route = context.Request.Path;
+                    
                     _logger.LogInformation(logModel.ToString());
                 }
             }
