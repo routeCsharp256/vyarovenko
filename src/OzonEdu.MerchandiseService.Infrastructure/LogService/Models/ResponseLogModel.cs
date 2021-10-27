@@ -6,6 +6,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs.Models
     {
         public string Route { get; set; }
         public Dictionary<string, string> Headers { get; set; } = new Dictionary<string, string>();
+        public string Body { get; set; }
         public override string ToString()
         {
             string result = "\n";
@@ -16,6 +17,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs.Models
             {
                 result += $"\t\"{header.Key}\":\"{header.Value}\"\n";
             }
+            result += "Body: " + $"{Body}";
             return result;
         }
     }

@@ -2,9 +2,6 @@
 using Grpc.Core;
 using OzonEdu.MerchandiseService.Grpc;
 using OzonEdu.MerchandiseService.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace OzonEdu.MerchandiseService.GrpcServices
@@ -17,13 +14,14 @@ namespace OzonEdu.MerchandiseService.GrpcServices
         {
             _merchService = merchandiseService;
         }
-
-        public override async Task<GetMerchItemsResponse> GetMerch(Empty request, ServerCallContext context)
+        
+        public override async Task<GetMerchItemsResponse> GetMerch(GetMerchItemsRequest item, ServerCallContext context)
         {
             var merch = await _merchService.GetMerch(context.CancellationToken);
             return new GetMerchItemsResponse { Name = merch.Name };
         }
-        public override async Task<GetMerchIsIssuedItemsResponse> GetMerchIsIssued(Empty request, ServerCallContext context)
+         
+        public override async Task<GetMerchIsIssuedItemsResponse> GetMerchIsIssued(GetMerchIsIssuedItemsRequest item, ServerCallContext context)
         {
             var merch = await _merchService.GetMerchIsIssued(context.CancellationToken);
             return new GetMerchIsIssuedItemsResponse { IsIssued = merch };

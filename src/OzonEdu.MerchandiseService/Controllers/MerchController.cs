@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OzonEdu.MerchandiseService.Models;
 using OzonEdu.MerchandiseService.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,11 +10,11 @@ namespace OzonEdu.MerchandiseService.Controllers
     [Route("v1/api/merch")]
     public class MerchController : ControllerBase
     {
-        private readonly IMerchandiseService _stockService;
+        private readonly IMerchandiseService _merchService;
 
         public MerchController(IMerchandiseService stockService)
         {
-            _stockService = stockService;
+            _merchService = stockService;
         }
         /// <summary>
         /// Запросить мерч
@@ -32,7 +29,7 @@ namespace OzonEdu.MerchandiseService.Controllers
         [Produces("application/json")]
         public async Task<ActionResult<GetMerchResponseModel>> GetMerch([FromQuery] long id, CancellationToken token)
         {
-            var merchItem = await _stockService.GetMerch(token);
+            var merchItem = await _merchService.GetMerch(token);
             if(merchItem == null)
             {
                 return NotFound();
@@ -55,7 +52,8 @@ namespace OzonEdu.MerchandiseService.Controllers
         [ProducesResponseType(typeof(bool), 200)]
         public async Task<ActionResult<bool>> GetMerchIsIssued([FromQuery] long id, CancellationToken token)
         {
-            var merchIsIssued = await _stockService.GetMerchIsIssued(token);
+            //throw new Exception("my Exception");
+            var merchIsIssued = await _merchService.GetMerchIsIssued(token);
             return Ok(merchIsIssued);
         }
     }

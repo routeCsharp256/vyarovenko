@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OzonEdu.MerchandiseService.Models
+﻿namespace OzonEdu.MerchandiseService.Models
 {
     public class GetMerchResponseModel
     {

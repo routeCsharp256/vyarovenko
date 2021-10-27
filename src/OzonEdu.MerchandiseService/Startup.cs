@@ -4,10 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using OzonEdu.MerchandiseService.Services.Interfaces;
 using OzonEdu.MerchandiseService.Services;
 using OzonEdu.MerchandiseService.GrpcServices;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
-using System.IO;
-using System;
 
 namespace OzonEdu.MerchandiseService
 {

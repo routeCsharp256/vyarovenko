@@ -18,13 +18,13 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Swagger.Services
                 options.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = VersionModel.ServiceName,
+                        Title = VersionModel.Name,
                         Version = VersionModel.Version
                     });
 
                 options.CustomSchemaIds(x => x.FullName);
 
-                var xmlFileName = VersionModel.ServiceName + ".xml";
+                var xmlFileName = VersionModel.Name + ".xml";
                 var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
                 options.IncludeXmlComments(xmlFilePath);
             });

@@ -11,8 +11,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs.StartupFilters
         {
             return app =>
             {
-                app.UseMiddleware<ResponseLoggingMiddleware>();
-                app.UseMiddleware<RequestLoggingMiddleware>();
+                app.UseMiddleware<LoggingMiddleware>();
                 next(app);
             };
         }
