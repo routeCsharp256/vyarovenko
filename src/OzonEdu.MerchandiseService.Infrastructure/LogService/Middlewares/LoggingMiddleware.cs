@@ -4,9 +4,8 @@ using OzonEdu.MerchandiseService.Infrastructure.Logs.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using System;
-using System.Text;
 using System.IO;
+using Serilog;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Logs
     .Middlewares
@@ -15,6 +14,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<LoggingMiddleware> _logger;
+        
 
         public LoggingMiddleware(RequestDelegate next, ILogger<LoggingMiddleware> logger)
         {
@@ -49,13 +49,17 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
         {
             try
             {
+                Log.Logger = new LoggerConfiguration()
+                        .MinimumLevel.Debug()
+                        .WriteTo.Console()
+                        .CreateLogger();
                 var logModel = new RequestLogModel
                 {
                     Route = context.Request.Path,
                     Headers = context.Request.Headers.ToDictionary(x => x.Key, x => (string)x.Value)
                 };
 
-                _logger.LogDebug(logModel.ToString());
+                Log.Debug("RequestLog: {@logModel}", logModel);
             }
             catch (Exception e)
             {
@@ -66,6 +70,11 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
         {
             try
             {
+                Log.Logger = new LoggerConfiguration()
+                        .MinimumLevel.Debug()
+                        .WriteTo.Console()
+                        .CreateLogger();
+
                 newBody.Seek(0, SeekOrigin.Begin);
                 var responseBody = await new StreamReader(context.Response.Body).ReadToEndAsync();
                 newBody.Seek(0, SeekOrigin.Begin);
@@ -77,7 +86,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
                     Body = responseBody
                 };
 
-                _logger.LogDebug(logModel.ToString());
+                Log.Debug("ResponseLog: {@logModel}", logModel);
                 return newBody;
             }
             catch (Exception e)
