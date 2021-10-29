@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using OzonEdu.MerchandiseService.Infrastructure.Logs.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +26,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
             try
             {
                 if ((context.Request.Path != null) &&
-                    (context.Request.Headers["Content-Type"].ToString().ToLower() != "application/grpc"))
+                    (!string.Equals(context.Request.ContentType, "application/grpc", StringComparison.OrdinalIgnoreCase)))
                 {
                     var originalBody = context.Response.Body;
                     using var newBody = new MemoryStream();
@@ -49,17 +48,9 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
         {
             try
             {
-                Log.Logger = new LoggerConfiguration()
-                        .MinimumLevel.Debug()
-                        .WriteTo.Console()
-                        .CreateLogger();
-                var logModel = new RequestLogModel
-                {
-                    Route = context.Request.Path,
-                    Headers = context.Request.Headers.ToDictionary(x => x.Key, x => (string)x.Value)
-                };
-
-                Log.Debug("RequestLog: {@logModel}", logModel);
+                Log.Debug("RequestLog:\nRoute: {Route}\nHeaders: {@headers}",
+                   context.Request.Path,
+                   context.Request.Headers.ToDictionary(x => x.Key, x => (string)x.Value));
             }
             catch (Exception e)
             {
@@ -70,23 +61,14 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Logs
         {
             try
             {
-                Log.Logger = new LoggerConfiguration()
-                        .MinimumLevel.Debug()
-                        .WriteTo.Console()
-                        .CreateLogger();
-
                 newBody.Seek(0, SeekOrigin.Begin);
                 var responseBody = await new StreamReader(context.Response.Body).ReadToEndAsync();
                 newBody.Seek(0, SeekOrigin.Begin);
 
-                var logModel = new ResponseLogModel
-                {
-                    Route = context.Request.Path,
-                    Headers = context.Response.Headers.ToDictionary(x => x.Key, x => (string)x.Value),
-                    Body = responseBody
-                };
-
-                Log.Debug("ResponseLog: {@logModel}", logModel);
+                Log.Debug("ResponseLog:\nRoute: {Route}\nHeaders: {@headers}\nBody: {Body}",
+                    context.Request.Path,
+                    context.Response.Headers.ToDictionary(x => x.Key, x => (string)x.Value),
+                    responseBody);
                 return newBody;
             }
             catch (Exception e)

@@ -17,11 +17,14 @@ namespace OzonEdu.MerchandiseService.Controllers
             _merchService = stockService;
         }
         /// <summary>
-        /// Запросить мерч
+        /// Выдача мерча по запросу:
+        /// Через REST API приходит запрос на выдачу мерча сотруднику
+        /// Проверяется что такой мерч еще не выдавался сотруднику
+        /// Проверяется наличие данного мерча на складе через запрос к stock-api
+        /// Если все проверки прошли - зарезервировать мерч в stock-api
+        /// Отметить у себя в БД, что сотруднику выдан мерч
+        /// Если мерча нет в наличии - необходимо запомнить, что такой сотрудник запрашивал такой мерч, и при появлении его на остатках - отправить уведомление
         /// </summary>
-        /// <param name="id">id</param>
-        /// <param name="token">токен</param>
-        /// <returns></returns>
         [HttpGet]
         [Route("GetMerch")]
         [ProducesResponseType(typeof(GetMerchResponseModel),200)]
@@ -41,11 +44,10 @@ namespace OzonEdu.MerchandiseService.Controllers
             return Ok(response);
         }
         /// <summary>
-        /// Получить информацию о выдаче мерча
+        /// Информация о выданном мерче
+        /// Реализовать REST-api метод, который будет возвращать по сотруднику информацию - какой мерч ему
+        /// выдавался
         /// </summary>
-        /// <param name="id">id</param>
-        /// <param name="token">токен</param>
-        /// <returns></returns>
         [HttpGet]
         [Route("GetMerchIsIssued")]
         [Produces("application/json")]

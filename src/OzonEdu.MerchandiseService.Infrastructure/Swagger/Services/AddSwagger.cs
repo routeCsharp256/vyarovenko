@@ -15,16 +15,17 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Swagger.Services
             services.AddSingleton<IStartupFilter, SwaggerStartupFilter>();
             services.AddSwaggerGen(options =>
             {
+                var version = new VersionModel();
                 options.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = VersionModel.Name,
-                        Version = VersionModel.Version
+                        Title = version.Name,
+                        Version = version.Version
                     });
 
                 options.CustomSchemaIds(x => x.FullName);
 
-                var xmlFileName = VersionModel.Name + ".xml";
+                var xmlFileName = version.Name + ".xml";
                 var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFileName);
                 options.IncludeXmlComments(xmlFilePath);
             });

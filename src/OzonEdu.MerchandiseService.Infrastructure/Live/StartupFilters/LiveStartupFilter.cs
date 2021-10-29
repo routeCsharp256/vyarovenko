@@ -11,7 +11,6 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Live.StartupFilters
         {
             return app =>
             {
-                //app.Map("/live", builder => builder.UseMiddleware<LiveMiddleware>());
                 app.Map("/live", b => b.Run(c => c.Response.WriteAsync("live")));
                 next(app);
             };
