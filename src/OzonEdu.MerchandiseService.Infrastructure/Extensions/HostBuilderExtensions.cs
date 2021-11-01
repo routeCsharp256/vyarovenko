@@ -8,7 +8,6 @@ using OzonEdu.MerchandiseService.Infrastructure.Version.StartupFilters;
 using OzonEdu.MerchandiseService.Infrastructure.Exceptions.Filters;
 using OzonEdu.MerchandiseService.Infrastructure.Logs.StartupFilters;
 using OzonEdu.MerchandiseService.Infrastructure.gRPC.Interceptors;
-using Serilog;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Extensions
 {
@@ -16,10 +15,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Extensions
     {
         public static IHostBuilder AddInfrastructure(this IHostBuilder builder)
         {
-            builder.UseSerilog((context, services, configuration) => configuration
-                .MinimumLevel.Debug()
-                .WriteTo.Console())
-                .ConfigureServices(services =>
+            builder.ConfigureServices(services =>
             {
                 services.AddSingleton<IStartupFilter, LogsStartupFilter>();
                 services.AddSwaggerService();
