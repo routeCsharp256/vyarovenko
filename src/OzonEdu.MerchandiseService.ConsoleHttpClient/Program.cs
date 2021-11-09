@@ -1,7 +1,7 @@
-﻿using OzonEdu.MerchandiseService.Models;
-using System;
-using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using OzonEdu.MerchandiseService.Models;
 
 namespace OzonEdu.MerchandiseService.ConsoleHttpClient
 {
@@ -9,16 +9,29 @@ namespace OzonEdu.MerchandiseService.ConsoleHttpClient
     {
         static void Main(string[] args)
         {
-            var client = new MerchHttpClient(new HttpClient
+            var client = new MerchHttpClient("http://localhost:5000");
+
+            var order = new OrderMerchModel
             {
-                BaseAddress = new Uri("http://localhost:5000")
-            });
-            GetMerchResponseModel merch = client.GetMerch(CancellationToken.None).Result;
-            Console.WriteLine($"GetMerch: merch.Name = { merch.Name }");
-            Console.WriteLine("GetMerchIsIssued: " + client.GetMerchIsIssued(CancellationToken.None).Result);
-            Console.WriteLine("GetVersion: " + client.GetVersion(CancellationToken.None).Result);
-            Console.WriteLine("GetLive: " + client.GetLive(CancellationToken.None).Result);
-            Console.WriteLine("GetReady: " + client.GetReady(CancellationToken.None).Result);
+                Employee = new Employee { Email = "test@gmail.com", Size = "XL" },
+                MerchItems = new List<MerchModel>
+                {
+                    new MerchModel {ItemType = "Bag", Quantity = 3, Tag = "test"},
+                    new MerchModel {ItemType = "TShort", Quantity = 1, Tag = "test2"}
+                }
+            };
+
+            var status = client.OrderMerch(order, CancellationToken.None);
+            Console.WriteLine(status);
+
+            var response = client.GetMerch("test@gmail.com", CancellationToken.None);
+            response.Result.ForEach((i) =>
+                Console.WriteLine($"ItemType = {i.ItemType}, Quantity = {i.Quantity}, Tag = {i.Tag}"));
+
+            Console.WriteLine("GetVersion: " + client.GetVersion(CancellationToken.None));
+            Console.WriteLine("GetLive: " + client.GetLive(CancellationToken.None));
+            Console.WriteLine("GetReady: " + client.GetReady(CancellationToken.None));
+            Console.ReadKey();
         }
     }
 }

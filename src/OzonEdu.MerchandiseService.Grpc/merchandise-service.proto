@@ -6,24 +6,23 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 service MerchandiseServiceGrpc {
-  rpc GetMerch (GetMerchItemsRequest) returns (GetMerchItemsResponse);
-  rpc GetMerchIsIssued (GetMerchIsIssuedItemsRequest) returns (GetMerchIsIssuedItemsResponse);
+  rpc OrderMerch (OrderMerchItemsRequest) returns (GetMerchItemsResponse);
 }
 
 message GetMerchItemsResponse 
 {
-  string name = 1;
+  bool is_merch_in_stock = 1;
 }
-
-message GetMerchIsIssuedItemsResponse 
+message OrderMerchItemsRequest
 {
-  bool IsIssued = 1;
+  repeated OrderMerchItem items = 1;
 }
-
-message GetMerchItemsRequest
+message OrderMerchItem
 {
-}
-
-message GetMerchIsIssuedItemsRequest
-{
+  int64 sku = 1;
+  string name = 2;
+  string type = 3;
+  string size = 4;
+  int32 quantity = 5;
+  string tag = 6;
 }

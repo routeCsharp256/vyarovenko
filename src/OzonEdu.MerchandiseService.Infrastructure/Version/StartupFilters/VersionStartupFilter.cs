@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Text.Json;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using OzonEdu.MerchandiseService.Infrastructure.Version.Models;
-using System.Text.Json;
-using System;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Version.StartupFilters
 {
-    public class VersionStartupFilter : IStartupFilter
+    public sealed class VersionStartupFilter : IStartupFilter
     {
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
         {

@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using OzonEdu.MerchandiseService.Models;
-using OzonEdu.MerchandiseService.Services.Interfaces;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using OzonEdu.MerchandiseService.Infrastructure.Mediator.Commands.GetMerch;
+using OzonEdu.MerchandiseService.Maper;
+using OzonEdu.MerchandiseService.Models;
 
 namespace OzonEdu.MerchandiseService.Controllers
 {
@@ -10,53 +13,55 @@ namespace OzonEdu.MerchandiseService.Controllers
     [Route("v1/api/merch")]
     public class MerchController : ControllerBase
     {
-        private readonly IMerchandiseService _merchService;
+        private readonly IMediator _mediator;
 
-        public MerchController(IMerchandiseService stockService)
+        public MerchController(IMediator mediator)
         {
-            _merchService = stockService;
+            _mediator = mediator;
         }
-        /// <summary>
-        /// Выдача мерча по запросу:
-        /// Через REST API приходит запрос на выдачу мерча сотруднику
-        /// Проверяется что такой мерч еще не выдавался сотруднику
-        /// Проверяется наличие данного мерча на складе через запрос к stock-api
-        /// Если все проверки прошли - зарезервировать мерч в stock-api
-        /// Отметить у себя в БД, что сотруднику выдан мерч
-        /// Если мерча нет в наличии - необходимо запомнить, что такой сотрудник запрашивал такой мерч, и при появлении его на остатках - отправить уведомление
-        /// </summary>
-        [HttpGet]
-        [Route("GetMerch")]
-        [ProducesResponseType(typeof(GetMerchResponseModel),200)]
+
+        [HttpPost]
         [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         [Produces("application/json")]
-        public async Task<ActionResult<GetMerchResponseModel>> GetMerch([FromQuery] long id, CancellationToken token)
+        public async Task<IActionResult> OrderMerch([FromBody] OrderMerchModel model, CancellationToken token)
         {
-            var merchItem = await _merchService.GetMerch(token);
-            if(merchItem == null)
+            if (model.MerchItems.Count <= 0)
             {
                 return NotFound();
             }
-            GetMerchResponseModel response = new GetMerchResponseModel
-            {
-                Name = merchItem.Name
-            };
-            return Ok(response);
+
+            var orderMerchCommand = OrderMerchModelToOrderMerchCommandMaper.MapOrderMerchModel(model);
+
+            //await _mediator.Send(orderMerchCommand, token);
+            return Ok();
         }
-        /// <summary>
-        /// Информация о выданном мерче
-        /// Реализовать REST-api метод, который будет возвращать по сотруднику информацию - какой мерч ему
-        /// выдавался
-        /// </summary>
+
         [HttpGet]
-        [Route("GetMerchIsIssued")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(bool), 200)]
-        public async Task<ActionResult<bool>> GetMerchIsIssued([FromQuery] long id, CancellationToken token)
+        [ProducesResponseType(typeof(List<MerchModel>), 200)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<List<MerchModel>>> GetMerch([FromQuery] string email, CancellationToken token)
         {
-            //throw new Exception("my Exception");
-            var merchIsIssued = await _merchService.GetMerchIsIssued(token);
-            return Ok(merchIsIssued);
+            //var getMerchCommand = new GetMerchCommand { Email = email };
+            //var merchItems = await _mediator.Send(getMerchCommand, token);
+
+            var result = new List<MerchModel>()
+            {
+                // Testing data
+                new MerchModel() {ItemType = "TShort", Quantity = 12, Tag = "test1"},
+                new MerchModel() {ItemType = "TShort", Quantity = 12, Tag = "test1"}
+            };
+            //merchItems?.ForEach((i) =>
+            //{
+            //    result.Add(new MerchModel
+            //    {
+            //        ItemType = i.ItemType.Value.Name,
+            //        Quantity = i.Quantity.Value,
+            //        Tag = i.Tag.Value
+            //    });
+            //});
+            return Ok(result);
         }
     }
 }

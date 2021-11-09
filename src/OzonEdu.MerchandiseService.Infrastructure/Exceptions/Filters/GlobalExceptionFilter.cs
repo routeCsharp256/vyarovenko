@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Exceptions.Filters
 {
-    public class GlobalExceptionFilter : IExceptionFilter
+    public sealed class GlobalExceptionFilter : IExceptionFilter
     {
         public void OnException(ExceptionContext context)
         {
             var resultObject = new
             {
                 ExceptionType = context.Exception.GetType().FullName,
+                Message = context.Exception.Message,
                 StackTrace = context.Exception.StackTrace
             };
 

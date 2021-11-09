@@ -2,7 +2,7 @@
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Version.Models
 {
-    public class VersionModel
+    public sealed class VersionModel
     {
         public string Version { get; private set; }
         public string Name { get; private set; }

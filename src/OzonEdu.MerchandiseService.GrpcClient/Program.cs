@@ -14,8 +14,6 @@ namespace OzonEdu.MerchandiseService.GrpcClient
             using var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var client = new MerchandiseServiceGrpc.MerchandiseServiceGrpcClient(channel);
 
-            Console.WriteLine("GetMerch: " + $"{await client.GetMerchAsync(new GetMerchItemsRequest(), cancellationToken: CancellationToken.None)}");
-            Console.WriteLine("GetMerchIsIssued: " + $"{await client.GetMerchIsIssuedAsync(new GetMerchIsIssuedItemsRequest(), cancellationToken: CancellationToken.None)}");
         }
     }
 }

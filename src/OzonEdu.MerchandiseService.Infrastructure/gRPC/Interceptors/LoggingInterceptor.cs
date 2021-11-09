@@ -1,15 +1,12 @@
-﻿using Grpc.Core;
+﻿using System.Text.Json;
+using System.Threading.Tasks;
+using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.gRPC.Interceptors
 {
-    public class LoggingInterceptor : Interceptor
+    public sealed class LoggingInterceptor : Interceptor
     {
         private readonly ILogger<LoggingInterceptor> _logger;
 
@@ -23,12 +20,12 @@ namespace OzonEdu.MerchandiseService.Infrastructure.gRPC.Interceptors
             UnaryServerMethod<TRequest, TResponse> continuation)
         {
             var requestJson = JsonSerializer.Serialize(request);
-            _logger.LogInformation("GrpcRequestJson: "+requestJson);
+            _logger.LogInformation("GrpcRequestJson: {0}", requestJson);
 
             var response = base.UnaryServerHandler(request, context, continuation);
 
             var responseJson = JsonSerializer.Serialize(response);
-            _logger.LogInformation("GrpcResponseJson: "+responseJson);
+            _logger.LogInformation("GrpcResponseJson: {0}", responseJson);
 
             return response;
         }

@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using OzonEdu.MerchandiseService.Services.Interfaces;
-using OzonEdu.MerchandiseService.Services;
 using OzonEdu.MerchandiseService.GrpcServices;
 
 namespace OzonEdu.MerchandiseService
@@ -11,17 +10,24 @@ namespace OzonEdu.MerchandiseService
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IMerchandiseService, MerchService>();
-            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
-            app.UseEndpoints(endpoints => 
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers().RequireHost("*:5000");
                 endpoints.MapGrpcService<MerchandiseGrpService>().RequireHost("*:5001");
+                endpoints.MapHealthChecks("/ready", new HealthCheckOptions()
+                {
+                    Predicate = (check) => check.Tags.Contains("ready")
+                });
+
+                endpoints.MapHealthChecks("/live", new HealthCheckOptions()
+                {
+                    Predicate = (check) => check.Tags.Contains("live")
+                });
             });
         }
     }

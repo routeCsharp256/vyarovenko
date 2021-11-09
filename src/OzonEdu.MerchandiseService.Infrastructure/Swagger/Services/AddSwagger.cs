@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using OzonEdu.MerchandiseService.Infrastructure.Swagger.StartupFilters;
 using OzonEdu.MerchandiseService.Infrastructure.Version.Models;
-using System;
-using System.IO;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Swagger.Services
 {

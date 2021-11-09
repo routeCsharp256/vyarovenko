@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using System;
 
 namespace OzonEdu.MerchandiseService.Infrastructure.Swagger.StartupFilters
 {
-    public class SwaggerStartupFilter : IStartupFilter
+    public sealed class SwaggerStartupFilter : IStartupFilter
     {
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
         {
