@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+option csharp_namespace = "OzonEdu.MerchandiseService.Grpc";
+package MerchandiseService;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service MerchandiseServiceGrpc {
+  rpc OrderMerch (OrderMerchItemsRequest) returns (GetMerchItemsResponse);
+}
+
+message GetMerchItemsResponse 
+{
+  bool is_merch_in_stock = 1;
+}
+message OrderMerchItemsRequest
+{
+  repeated OrderMerchItem items = 1;
+}
+message OrderMerchItem
+{
+  int64 sku = 1;
+  string name = 2;
+  string type = 3;
+  string size = 4;
+  int32 quantity = 5;
+  string tag = 6;
+}
