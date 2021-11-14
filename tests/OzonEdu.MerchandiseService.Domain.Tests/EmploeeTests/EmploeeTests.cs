@@ -182,9 +182,9 @@ namespace OzonEdu.MerchandiseService.Domain.Tests.EmployeeTests
             #endregion
             #region Assert
             Assert.Equal(3, items.Count);
-            Assert.Equal(items[0].ItemType.Value, MerchType.Notepad);
-            Assert.Equal(items[1].ItemType.Value, MerchType.Pen);
-            Assert.Equal(items[2].ItemType.Value, MerchType.TShort);
+            Assert.Equal(items.ToList()[0].ItemType.Value, MerchType.Notepad);
+            Assert.Equal(items.ToList()[1].ItemType.Value, MerchType.Pen);
+            Assert.Equal(items.ToList()[2].ItemType.Value, MerchType.TShort);
             #endregion
         }
         [Fact]
@@ -200,11 +200,11 @@ namespace OzonEdu.MerchandiseService.Domain.Tests.EmployeeTests
             #endregion
             #region Assert
             Assert.Equal(5, items.Count);
-            Assert.Equal(items[0].ItemType.Value, MerchType.Notepad);
-            Assert.Equal(items[1].ItemType.Value, MerchType.Pen);
-            Assert.Equal(items[2].ItemType.Value, MerchType.TShort);
-            Assert.Equal(items[3].ItemType.Value, MerchType.Socks);
-            Assert.Equal(items[4].ItemType.Value, MerchType.Bag);
+            Assert.Equal(items.ToList()[0].ItemType.Value, MerchType.Notepad);
+            Assert.Equal(items.ToList()[1].ItemType.Value, MerchType.Pen);
+            Assert.Equal(items.ToList()[2].ItemType.Value, MerchType.TShort);
+            Assert.Equal(items.ToList()[3].ItemType.Value, MerchType.Socks);
+            Assert.Equal(items.ToList()[4].ItemType.Value, MerchType.Bag);
             #endregion
         }
         [Fact]
@@ -220,8 +220,8 @@ namespace OzonEdu.MerchandiseService.Domain.Tests.EmployeeTests
             #endregion
             #region Assert
             Assert.Equal(2, items.Count);
-            Assert.Equal(items[0].ItemType.Value, MerchType.Notepad);
-            Assert.Equal(items[1].ItemType.Value, MerchType.Pen);
+            Assert.Equal(items.ToList()[0].ItemType.Value, MerchType.Notepad);
+            Assert.Equal(items.ToList()[1].ItemType.Value, MerchType.Pen);
             #endregion
         }
         [Fact]
@@ -237,10 +237,10 @@ namespace OzonEdu.MerchandiseService.Domain.Tests.EmployeeTests
             #endregion
             #region Assert
             Assert.Equal(4, items.Count);
-            Assert.Equal(items[0].ItemType.Value, MerchType.Notepad);
-            Assert.Equal(items[1].ItemType.Value, MerchType.Pen);
-            Assert.Equal(items[2].ItemType.Value, MerchType.TShort);
-            Assert.Equal(items[3].ItemType.Value, MerchType.Sweatshirt);
+            Assert.Equal(items.ToList()[0].ItemType.Value, MerchType.Notepad);
+            Assert.Equal(items.ToList()[1].ItemType.Value, MerchType.Pen);
+            Assert.Equal(items.ToList()[2].ItemType.Value, MerchType.TShort);
+            Assert.Equal(items.ToList()[3].ItemType.Value, MerchType.Sweatshirt);
             #endregion
         }
         [Fact]
@@ -256,12 +256,12 @@ namespace OzonEdu.MerchandiseService.Domain.Tests.EmployeeTests
             #endregion
             #region Assert
             Assert.Equal(6, items.Count);
-            Assert.Equal(items[0].ItemType.Value, MerchType.Notepad);
-            Assert.Equal(items[1].ItemType.Value, MerchType.Pen);
-            Assert.Equal(items[2].ItemType.Value, MerchType.TShort);
-            Assert.Equal(items[3].ItemType.Value, MerchType.Sweatshirt);
-            Assert.Equal(items[4].ItemType.Value, MerchType.Socks);
-            Assert.Equal(items[5].ItemType.Value, MerchType.Bag);
+            Assert.Equal(items.ToList()[0].ItemType.Value, MerchType.Notepad);
+            Assert.Equal(items.ToList()[1].ItemType.Value, MerchType.Pen);
+            Assert.Equal(items.ToList()[2].ItemType.Value, MerchType.TShort);
+            Assert.Equal(items.ToList()[3].ItemType.Value, MerchType.Sweatshirt);
+            Assert.Equal(items.ToList()[4].ItemType.Value, MerchType.Socks);
+            Assert.Equal(items.ToList()[5].ItemType.Value, MerchType.Bag);
             #endregion
         }
     }

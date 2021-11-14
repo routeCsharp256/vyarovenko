@@ -1,12 +1,8 @@
-﻿using OzonEdu.MerchandiseService.Domain.AgregationModels.MerchItemAgregate;
-using OzonEdu.MerchandiseService.Domain.Models;
-using OzonEdu.MerchandiseService.Domain.AgregationModels.MerchPackAgregate;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
+using OzonEdu.MerchandiseService.Domain.AgregationModels.MerchItemAgregate;
+using OzonEdu.MerchandiseService.Domain.Models;
 
 namespace OzonEdu.MerchandiseService.Domain.AgregationModels.EmloeeAgregate
 {
@@ -28,12 +24,12 @@ namespace OzonEdu.MerchandiseService.Domain.AgregationModels.EmloeeAgregate
         /// <summary>
         /// Полученный мерч
         /// </summary>
-        List<MerchItem> ReceivedMerchItems { get; set; }
+        private List<MerchItem> ReceivedMerchItems { get; }
 
         /// <summary>
         /// Не полученный мерч
         /// </summary>
-        List<MerchItem> OrderMerchItems { get; set; }
+        private List<MerchItem> OrderMerchItems { get; }
 
         public Employee(MailAddress email, ClouthingSize size)
         {
@@ -50,13 +46,13 @@ namespace OzonEdu.MerchandiseService.Domain.AgregationModels.EmloeeAgregate
         /// Получить список полученного мерча
         /// </summary>
         /// <returns></returns>
-        public List<MerchItem> GetReceivedMerchItems() => ReceivedMerchItems;
+        public IReadOnlyCollection<MerchItem> GetReceivedMerchItems() => ReceivedMerchItems;
 
         /// <summary>
         /// Получить список не полученного мерча
         /// </summary>
         /// <returns></returns>
-        public List<MerchItem> GetOrderMerchItems() => OrderMerchItems;
+        public IReadOnlyCollection<MerchItem> GetOrderMerchItems() => OrderMerchItems;
 
         /// <summary>
         /// Заказать мерч
@@ -112,46 +108,6 @@ namespace OzonEdu.MerchandiseService.Domain.AgregationModels.EmloeeAgregate
         /// <param name="text"></param>
         void SendEmail(string text)
         {
-        }
-
-        /// <summary>
-        /// Заказать Welcome Pack
-        /// </summary>
-        public void OrderWelcomePack(bool flag)
-        {
-            OrderMerch(flag, MerchPack.GetWelcomePack(Size).GetItems());
-        }
-
-        /// <summary>
-        /// Заказать Starter Pack
-        /// </summary>
-        public void OrderStarterPack(bool flag)
-        {
-            OrderMerch(flag, MerchPack.GetStarterPack(Size).GetItems());
-        }
-
-        /// <summary>
-        /// Заказать ConferenceListener Pack
-        /// </summary>
-        public void OrderConferenceListenerPack(bool flag)
-        {
-            OrderMerch(flag, MerchPack.GetConferenceListenerPack().GetItems());
-        }
-
-        /// <summary>
-        /// Заказать Conference SpeakerPack
-        /// </summary>
-        public void OrderConferenceSpeakerPack(bool flag)
-        {
-            OrderMerch(flag, MerchPack.GetConferenceSpeakerPack(Size).GetItems());
-        }
-
-        /// <summary>
-        /// Заказать Veteran Pack
-        /// </summary>
-        public void OrderVeteranPack(bool flag)
-        {
-            OrderMerch(flag, MerchPack.GetVeteranPack(Size).GetItems());
         }
     }
 }

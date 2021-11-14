@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -21,7 +22,7 @@ namespace OzonEdu.MerchandiseService.Infrastructure.Mediator.Handlers
         public Task<List<MerchItem>> Handle(GetMerchCommand request, CancellationToken cancellationToken)
         {
             var Employee = _EmployeeRepository.FindByEmail(request.Email, cancellationToken);
-            return Task.FromResult(Employee.GetReceivedMerchItems());
+            return Task.FromResult(Employee.GetReceivedMerchItems().ToList());
         }
     }
 }
