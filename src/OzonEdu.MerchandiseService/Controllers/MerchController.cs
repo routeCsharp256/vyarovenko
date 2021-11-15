@@ -33,7 +33,7 @@ namespace OzonEdu.MerchandiseService.Controllers
 
             var orderMerchCommand = OrderMerchModelToOrderMerchCommandMaper.MapOrderMerchModel(model);
 
-            //await _mediator.Send(orderMerchCommand, token);
+            await _mediator.Send(orderMerchCommand, token);
             return Ok();
         }
 
@@ -43,24 +43,24 @@ namespace OzonEdu.MerchandiseService.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<List<MerchModel>>> GetMerch([FromQuery] string email, CancellationToken token)
         {
-            //var getMerchCommand = new GetMerchCommand { Email = email };
-            //var merchItems = await _mediator.Send(getMerchCommand, token);
+            var getMerchCommand = new GetMerchCommand { Email = email };
+            var merchItems = await _mediator.Send(getMerchCommand, token);
 
-            var result = new List<MerchModel>()
-            {
-                // Testing data
-                new MerchModel() {ItemType = "TShort", Quantity = 12, Tag = "test1"},
-                new MerchModel() {ItemType = "TShort", Quantity = 12, Tag = "test1"}
-            };
-            //merchItems?.ForEach((i) =>
+            var result = new List<MerchModel>();
             //{
-            //    result.Add(new MerchModel
-            //    {
-            //        ItemType = i.ItemType.Value.Name,
-            //        Quantity = i.Quantity.Value,
-            //        Tag = i.Tag.Value
-            //    });
-            //});
+            //    // Testing data
+            //    new MerchModel() {ItemType = "TShort", Quantity = 12, Tag = "test1"},
+            //    new MerchModel() {ItemType = "TShort", Quantity = 12, Tag = "test1"}
+            //};
+            merchItems?.ForEach((i) =>
+            {
+                result.Add(new MerchModel
+                {
+                    ItemType = i.ItemType.Value.Name,
+                    Quantity = i.Quantity.Value,
+                    Tag = i.Tag.Value
+                });
+            });
             return Ok(result);
         }
     }
