@@ -3,31 +3,48 @@ version: '3.8'
 services:
   merchandise-service:
     # image: ''
-    build: /
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
     hostname: merchandise-service
     ports:
       - "8000:80"
+      - "9000:443"
+    environment:
+      DatabaseConnectionOptions__ConnectionString: "Host=host.docker.internal;Port=5426;Database=merchandise-service;Username=postgres;Password=merchPassword"
+    depends_on:
+      - merchandise-service-db
+
+  merchandise-service-db:
+    image: postgres:latest
+    ports:
+      - "5426:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: merchPassword
+      POSTGRES_DB: merchandise-service
+    command: "-c log_statement=all"
   
-  stock-api:
-    image: 'ghcr.io/ozon-edu-csharp-2021/stock-api:main'
-    hostname: stock_api
-    ports:
-      - "8001:80"
+  #stock-api:
+  #  image: 'ghcr.io/ozon-edu-csharp-2021/stock-api:main'
+  #  hostname: stock_api
+  #  ports:
+  #    - "8001:80"
 
-  emailing-service:
-    image: 'ghcr.io/ozon-edu-csharp-2021/emailing-service:main'
-    hostname: emailing-service
-    ports:
-      - "8002:80"
+  #emailing-service:
+  #  image: 'ghcr.io/ozon-edu-csharp-2021/emailing-service:main'
+  #  hostname: emailing-service
+  #  ports:
+  #    - "8002:80"
 
-  supply-service:
-    image: 'ghcr.io/ozon-edu-csharp-2021/supply-service:main'
-    hostname: supply-service
-    ports:
-      - "8003:80"
+  #supply-service:
+  #  image: 'ghcr.io/ozon-edu-csharp-2021/supply-service:main'
+  #  hostname: supply-service
+  #  ports:
+  #    - "8003:80"
 
-  employees-service:
-    image: 'ghcr.io/ozon-edu-csharp-2021/employees-service:main'
-    hostname: employees-service
-    ports:
-      - "8004:80"
+  #employees-service:
+  #  image: 'ghcr.io/ozon-edu-csharp-2021/employees-service:main'
+  #  hostname: employees-service
+  #  ports:
+  #    - "8004:80"
