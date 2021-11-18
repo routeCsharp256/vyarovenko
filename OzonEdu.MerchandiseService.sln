@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{A48D2B
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 		dockerfile = dockerfile
+		entrypoint.sh = entrypoint.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzonEdu.MerchandiseService", "src\OzonEdu.MerchandiseService\OzonEdu.MerchandiseService.csproj", "{76231F88-05D0-4CD3-BD0E-CF5EB408FC03}"
@@ -41,6 +42,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzonEdu.MerchandiseService.Domain", "src\OzonEdu.MerchandiseService.Domain\OzonEdu.MerchandiseService.Domain.csproj", "{A159A619-DCF3-449F-9404-D71A405BA945}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzonEdu.MerchandiseService.Domain.Tests", "tests\OzonEdu.MerchandiseService.Domain.Tests\OzonEdu.MerchandiseService.Domain.Tests.csproj", "{D0C8642E-7854-483B-ACC4-F19E59FDB61E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OzonEdu.MerchandiseService.Migrator", "src\OzonEdu.MerchandiseService.Migrator\OzonEdu.MerchandiseService.Migrator.csproj", "{893ED019-7F74-4C43-8717-C5379F0E4E01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +79,10 @@ Global
 		{D0C8642E-7854-483B-ACC4-F19E59FDB61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C8642E-7854-483B-ACC4-F19E59FDB61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C8642E-7854-483B-ACC4-F19E59FDB61E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893ED019-7F74-4C43-8717-C5379F0E4E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893ED019-7F74-4C43-8717-C5379F0E4E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893ED019-7F74-4C43-8717-C5379F0E4E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893ED019-7F74-4C43-8717-C5379F0E4E01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +96,7 @@ Global
 		{69DAB192-2C71-4CE8-990A-F2747DC4ECDC} = {13A99F60-FAE7-4ED6-9B69-E5FE8504BA62}
 		{A159A619-DCF3-449F-9404-D71A405BA945} = {13A99F60-FAE7-4ED6-9B69-E5FE8504BA62}
 		{D0C8642E-7854-483B-ACC4-F19E59FDB61E} = {FDAE759F-585F-4E8F-8762-4D59A56A82FD}
+		{893ED019-7F74-4C43-8717-C5379F0E4E01} = {13A99F60-FAE7-4ED6-9B69-E5FE8504BA62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC8BE419-4BA0-4004-9718-8DFF2EAF09E4}
